@@ -2,6 +2,7 @@
 #define POOMBA_BT_H
 
 #include "Arduino.h"
+#include "MEDP.h"
 
 /**
 Class to receive a data stream via bluetooth
@@ -19,9 +20,13 @@ private:
   static const char END_MESSAGE_CHAR;
   static const char PROTOCOL_DIVIDER_CHAR;
 
+  /** Protocol identifiers constants declaration */
+  static const char MEDP_PROTOCOL_IDENTIFIER[];
+
   String receivedMessage;
 
-  String getProtocolType(String message);
+  void processMessage(String message);
+  String getProtocolIdentifier(String message);
 };
 
 #endif
